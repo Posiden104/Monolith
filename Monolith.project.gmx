@@ -3,26 +3,67 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\Infinity Dog</extension>
+    <extension index="1">extensions\Room Dog</extension>
+  </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\sBone</sprite>
+    <sprite>sprites\sDog</sprite>
+    <sprite>sprites\sWall</sprite>
+    <sprite>sprites\sWall_new</sprite>
+    <sprite>sprites\sDog_new</sprite>
+    <sprite>sprites\sBone_new</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bTiles</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_get_input.gml</script>
     <script>scripts\scr_move_state.gml</script>
+    <script>scripts\infinitydog_wrap_room.gml</script>
+    <script>scripts\roomdog_copy_room.gml</script>
+    <script>scripts\roomdog_paste_room.gml</script>
+    <script>scripts\roomdog_get_room_width.gml</script>
+    <script>scripts\roomdog_get_room_height.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_lifeform_parent</object>
+    <object>objects\ExampleBone</object>
+    <object>objects\ExampleWall</object>
+    <object>objects\ExamplePlayer</object>
+    <object>objects\InfiniteRoom</object>
+    <object>objects\RoomChunkManager</object>
+    <objects name="examples">
+      <object>objects\ExampleBone_new</object>
+      <object>objects\ExampleDog</object>
+      <object>objects\ExampleWall_new</object>
+      <object>objects\LevelGenerator_Fill</object>
+      <object>objects\LevelGenerator_Paste</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_first</room>
+    <room>rooms\ExampleRoom</room>
+    <room>rooms\rSetup</room>
+    <room>rooms\rLoadRoomChunks</room>
+    <room>rooms\rExampleGeneratedLevel_Fill</room>
+    <room>rooms\rExampleGeneratedLevel_Paste</room>
+    <rooms name="Room Chunks">
+      <room>rooms\rChunk1</room>
+      <room>rooms\rChunk2</room>
+      <room>rooms\rChunk3</room>
+    </rooms>
   </rooms>
+  <constants number="1">
+    <constant name="Global_TILESIZE">32</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

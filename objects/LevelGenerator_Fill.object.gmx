@@ -25,57 +25,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init the lifeform
-phy_fixed_rotation = true;
+            <string>/*
+    This is a basic example of how you could start
+    making a randomly generated level. There could
+    be more rules added to make sure players can 
+    always find a way to the exit, etc, etc.
+*/
+
+var ROOM_CHUNK_WIDTH = roomdog_get_room_width(rChunk1);
+var ROOM_CHUNK_HEIGHT = roomdog_get_room_height(rChunk1);
+
+for(var X=0; X&lt;room_width; X+=ROOM_CHUNK_WIDTH) 
+    for(var Y=0; Y&lt;room_height; Y+=ROOM_CHUNK_HEIGHT)
+    {
+        var RANDOM_FILE = ds_list_find_value(RoomChunkManager.fileChunks, 
+                                             irandom(ds_list_size(RoomChunkManager.fileChunks)-1));
+        roomdog_paste_room(RANDOM_FILE, X, Y,choose(1,-1),choose(1,-1));
+    }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_lifeform_parent">
+    <event eventtype="9" enumb="1">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>223</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_current_room</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Collide
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_wall">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Collide
-</string>
-          </argument>
-        </arguments>
       </action>
     </event>
   </events>

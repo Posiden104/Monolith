@@ -3,8 +3,8 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
-  <persistent>0</persistent>
+  <depth>10</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,14 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init the lifeform
-phy_fixed_rotation = true;
+            <string>///init
+
+/*
+    add your room chunks to this list
+    to copy them at the start of the
+    game. You can then paste them at
+    will in-game.
+*/
+roomChunks = ds_queue_create();
+ds_queue_enqueue(roomChunks,rChunk1);
+ds_queue_enqueue(roomChunks,rChunk2);
+ds_queue_enqueue(roomChunks,rChunk3);
+
+/*
+    these are the corresponding file 
+    names of the exported rooms
+*/
+
+fileChunks = ds_list_create();
+
+/*
+    attributes we might need to access quickly
+*/
+roomWidths = ds_map_create();
+roomHeights = ds_map_create();
+
+saveThisRoom = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_lifeform_parent">
+    <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -49,13 +74,37 @@ phy_fixed_rotation = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Collide
+            <string>///save rooms
+
+/*
+    this loops from the rLoadRoomChunks room
+    to the next queued room, copies it, and
+    returns to the rLoadRoomChunks room. Once
+    all rooms are copied it goes to the next 
+    room.
+*/
+if(room == rLoadRoomChunks)
+{
+    if(ds_queue_size(roomChunks)&gt;0)
+    {
+        saveThisRoom = true;
+        room_goto(ds_queue_dequeue(roomChunks));
+    }
+    else
+        room_goto_next();
+}        
+else if(saveThisRoom)
+{
+    saveThisRoom = false;
+    roomdog_copy_room();
+    room_goto(rLoadRoomChunks);   
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_wall">
+    <event eventtype="7" enumb="3">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -72,7 +121,11 @@ phy_fixed_rotation = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Collide
+            <string>///clean up
+ds_queue_destroy(roomChunks);
+ds_list_destroy(fileChunks);
+ds_map_destroy(roomWidths);
+ds_map_destroy(roomHeights);
 </string>
           </argument>
         </arguments>
