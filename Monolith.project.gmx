@@ -11,6 +11,7 @@
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_wall</sprite>
+<<<<<<< HEAD
     <sprite>sprites\sBone</sprite>
     <sprite>sprites\sDog</sprite>
     <sprite>sprites\sWall</sprite>
@@ -20,6 +21,17 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bTiles</background>
+=======
+    <sprite>sprites\spr_floor</sprite>
+    <sprite>sprites\spr_player_up</sprite>
+    <sprite>sprites\spr_player_left</sprite>
+    <sprite>sprites\spr_player_down</sprite>
+    <sprite>sprites\spr_player_right</sprite>
+    <sprite>sprites\spr_color_palette</sprite>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\bg_dungoen_floor</background>
+>>>>>>> 1ac9d0fcaf6b9af0059f06d73ab55f26bc315458
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -35,6 +47,7 @@
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_lifeform_parent</object>
+<<<<<<< HEAD
     <object>objects\ExampleBone</object>
     <object>objects\ExampleWall</object>
     <object>objects\ExamplePlayer</object>
@@ -47,6 +60,9 @@
       <object>objects\LevelGenerator_Fill</object>
       <object>objects\LevelGenerator_Paste</object>
     </objects>
+=======
+    <object>objects\obj_view</object>
+>>>>>>> 1ac9d0fcaf6b9af0059f06d73ab55f26bc315458
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_first</room>
